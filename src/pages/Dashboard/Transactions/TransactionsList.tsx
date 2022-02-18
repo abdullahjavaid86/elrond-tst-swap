@@ -1,13 +1,14 @@
-import React from 'react';
 import {
-  useGetAccountInfo,
   DappUI,
+  useGetAccountInfo,
   useGetNetworkConfig
 } from '@elrondnetwork/dapp-core';
-import moment from 'moment';
+
+import React from 'react';
 import StatusIcon from './StatusIcon';
-import txStatus from './txStatus';
 import { TransactionType } from './types';
+import moment from 'moment';
+import txStatus from './txStatus';
 
 function sortByDate(a: TransactionType, b: TransactionType) {
   if (a.timestamp < b.timestamp) {

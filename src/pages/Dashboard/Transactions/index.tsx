@@ -1,16 +1,17 @@
-import React from 'react';
 import {
-  useGetAccountInfo,
   DappUI,
-  transactionServices,
   refreshAccount,
+  transactionServices,
+  useGetAccountInfo,
   useGetNetworkConfig
 } from '@elrondnetwork/dapp-core';
+
+import React from 'react';
+import { StateType } from './types';
+import TransactionsList from './TransactionsList';
+import { contractAddress } from 'config';
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { getTransactions } from 'apiRequests';
-import { contractAddress } from 'config';
-import TransactionsList from './TransactionsList';
-import { StateType } from './types';
 
 const Transactions = () => {
   const {
@@ -41,7 +42,7 @@ const Transactions = () => {
       });
     }
   };
-
+  
   React.useEffect(fetchData, [success, fail, hasActiveTransactions]);
 
   const { transactions } = state;

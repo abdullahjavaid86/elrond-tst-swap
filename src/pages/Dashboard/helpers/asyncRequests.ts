@@ -28,7 +28,7 @@ const fetchTransactions = (url: string) =>
       });
 
       return {
-        data: data,
+        data,
         success: data !== undefined
       };
     } catch (err) {

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { useGetAccountInfo, DappUI } from '@elrondnetwork/dapp-core';
+
+import { DappUI, useGetAccountInfo } from '@elrondnetwork/dapp-core';
+
 import { contractAddress } from 'config';
 
 const TopInfo = () => {
@@ -16,6 +18,7 @@ const TopInfo = () => {
         <span data-testid='contractAddress'> {contractAddress}</span>
       </div>
       <div>
+        {console.log(account)}
         <h3 className='py-2'>
           <DappUI.Denominate value={account.balance} data-testid='balance' />
         </h3>

@@ -1,10 +1,11 @@
-import { dAppName } from 'config';
-import withPageTitle from './components/PageTitle';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
+import React from 'react';
 import Transaction from './pages/Transaction';
+import { dAppName } from 'config';
+import withPageTitle from './components/PageTitle';
 
-export const routeNames = {
+export const routeNames: Record<string, string> = {
   home: '/',
   dashboard: '/dashboard',
   transaction: '/transaction',
@@ -13,7 +14,15 @@ export const routeNames = {
   walletconnect: '/walletconnect'
 };
 
-const routes: Array<any> = [
+interface RoutesInterface {
+  path: string;
+  title: string;
+  component: React.ComponentType;
+  authenticatedRoute?: boolean;
+  [key: string]: any;
+}
+
+const routes: RoutesInterface[] = [
   {
     path: routeNames.home,
     title: 'Home',

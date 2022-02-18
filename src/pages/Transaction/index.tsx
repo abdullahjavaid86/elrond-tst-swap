@@ -1,13 +1,14 @@
 import * as React from 'react';
+
 import { DappUI, useGetNetworkConfig } from '@elrondnetwork/dapp-core';
+import { Link, useLocation } from 'react-router-dom';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useLocation, Link } from 'react-router-dom';
+
 import { routeNames } from 'routes';
 
 const Transaction = () => {
   const { search } = useLocation();
   const { network } = useGetNetworkConfig();
-
   const query = new URLSearchParams(search);
   const { status, txHash } = Object.fromEntries(query);
 
@@ -22,11 +23,12 @@ const Transaction = () => {
           <p>
             <a
               href={`${network.explorerAddress}/transactions/${txHash}`}
-              {...{
-                target: '_blank'
-              }}
               className='tx-link'
               title='View in Explorer'
+              {...{
+                target: '_blank',
+                rel: 'noreferrer'
+              }}
             >
               {txHash}
             </a>
