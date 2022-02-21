@@ -9,7 +9,7 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
+    }
   },
   "settings": {
     "import/parsers": {
@@ -33,7 +33,7 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended",
     "plugin:react-hooks/recommended"
   ],
   "plugins": ["react", "prettier", "import"],
@@ -57,12 +57,12 @@
         }
       }
     ],
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "lf"
-      }
-    ],
+    // "prettier/prettier": [
+    //   "error",
+    //   {
+    //     "endOfLine": "lf"
+    //   }
+    // ],
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",

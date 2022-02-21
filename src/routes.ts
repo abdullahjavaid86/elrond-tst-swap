@@ -1,6 +1,9 @@
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
+import Info from './pages/Info';
+import { NFTs } from 'pages/NFT';
 import React from 'react';
+import { TSTSale } from 'pages/Sale';
 import Transaction from './pages/Transaction';
 import { dAppName } from 'config';
 import withPageTitle from './components/PageTitle';
@@ -11,7 +14,10 @@ export const routeNames: Record<string, string> = {
   transaction: '/transaction',
   unlock: '/unlock',
   ledger: '/ledger',
-  walletconnect: '/walletconnect'
+  walletconnect: '/walletconnect',
+  info: '/info',
+  nft: '/nfts',
+  sale: 'tst-sale'
 };
 
 interface RoutesInterface {
@@ -38,6 +44,21 @@ const routes: RoutesInterface[] = [
     path: routeNames.transaction,
     title: 'Transaction',
     component: Transaction
+  },
+  {
+    path: routeNames.info,
+    title: 'Information',
+    component: Info
+  },
+  {
+    path: routeNames.nft,
+    title: 'Swap Your NFTs',
+    component: NFTs
+  },
+  {
+    path: routeNames.sale,
+    title: 'TST Public Sale',
+    component: TSTSale
   }
 ];
 

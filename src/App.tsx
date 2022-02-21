@@ -7,15 +7,12 @@ import routes, { routeNames } from 'routes';
 import Layout from 'components/Layout';
 import PageNotFound from 'pages/PageNotFound';
 import React from 'react';
+import UnlockRoute from 'pages/UnlockPage';
 
 const environment = 'devnet';
 
-const {
-  TransactionsToastList,
-  SignTransactionsModals,
-  NotificationModal,
-  DappCorePages: { UnlockPage }
-} = DappUI;
+const { TransactionsToastList, SignTransactionsModals, NotificationModal } =
+  DappUI;
 
 const App = () => (
   <Router>
@@ -29,14 +26,11 @@ const App = () => (
         <NotificationModal />
         <SignTransactionsModals className='custom-class-for-modals' />
         <Routes>
-          <Route
-            path={routeNames.unlock}
-            element={<UnlockPage loginRoute={routeNames.dashboard} />}
-          />
+          <Route path={routeNames.unlock} element={<UnlockRoute />} />
           {routes.map((route: any, index: number) => (
             <Route
               path={route.path}
-              key={'route-key-' + index}
+              key={`route-key-${index}`}
               element={<route.component />}
             />
           ))}

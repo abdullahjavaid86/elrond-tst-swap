@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  transactionServices,
-  useGetAccountInfo,
-  useGetPendingTransactions,
-  refreshAccount,
-  useGetNetworkConfig
-} from '@elrondnetwork/dapp-core';
+
 import {
   Address,
   AddressValue,
@@ -13,10 +7,18 @@ import {
   ProxyProvider,
   Query
 } from '@elrondnetwork/erdjs';
-import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import {
+  refreshAccount,
+  transactionServices,
+  useGetAccountInfo,
+  useGetNetworkConfig,
+  useGetPendingTransactions
+} from '@elrondnetwork/dapp-core';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import moment from 'moment';
 import { contractAddress } from 'config';
+import moment from 'moment';
 
 const Actions = () => {
   const account = useGetAccountInfo();
@@ -36,10 +38,9 @@ const Actions = () => {
         setSecondsLeft((existing) => {
           if (existing) {
             return existing - 1;
-          } else {
-            clearInterval(interval);
-            return 0;
           }
+          clearInterval(interval);
+          return 0;
         });
       }, 1000);
       return () => {
@@ -152,37 +153,35 @@ const Actions = () => {
               </a>
             </div>
           ) : (
-            <>
-              <div className='d-flex flex-column'>
-                <div
-                  {...{
-                    className: `action-btn ${notAllowedClass}`,
-                    ...(pongAllowed ? { onClick: sendPongTransaction } : {})
-                  }}
-                >
-                  <button className={`btn ${notAllowedClass}`}>
-                    <FontAwesomeIcon
-                      icon={faArrowDown}
-                      className='text-primary'
-                    />
-                  </button>
-                  <span className='text-white'>
-                    {pongAllowed ? (
-                      <a href='/' className='text-white text-decoration-none'>
-                        Pong
-                      </a>
-                    ) : (
-                      <>Pong</>
-                    )}
-                  </span>
-                </div>
-                {!pongAllowed && !hasPendingTransactions && (
-                  <span className='opacity-6 text-white'>
-                    {timeRemaining} until able to Pong
-                  </span>
-                )}
+            <div className='d-flex flex-column'>
+              <div
+                {...{
+                  className: `action-btn ${notAllowedClass}`,
+                  ...(pongAllowed ? { onClick: sendPongTransaction } : {})
+                }}
+              >
+                <button className={`btn ${notAllowedClass}`}>
+                  <FontAwesomeIcon
+                    icon={faArrowDown}
+                    className='text-primary'
+                  />
+                </button>
+                <span className='text-white'>
+                  {pongAllowed ? (
+                    <a href='/' className='text-white text-decoration-none'>
+                      Pong
+                    </a>
+                  ) : (
+                    <>Pong</>
+                  )}
+                </span>
               </div>
-            </>
+              {!pongAllowed && !hasPendingTransactions && (
+                <span className='opacity-6 text-white'>
+                  {timeRemaining} until able to Pong
+                </span>
+              )}
+            </div>
           )}
         </>
       )}

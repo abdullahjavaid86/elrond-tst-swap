@@ -1,16 +1,17 @@
-import React from 'react';
+import { Navbar as BsNavbar, Nav, NavItem } from 'react-bootstrap';
 import { logout, useGetAccountInfo } from '@elrondnetwork/dapp-core';
-import { Navbar as BsNavbar, NavItem, Nav } from 'react-bootstrap';
+
+import { ReactComponent as ElrondLogo } from './../../../assets/img/elrond.svg';
 import { Link } from 'react-router-dom';
+import React from 'react';
 import { dAppName } from 'config';
 import { routeNames } from 'routes';
-import { ReactComponent as ElrondLogo } from './../../../assets/img/elrond.svg';
 
 const Navbar = () => {
   const { address } = useGetAccountInfo();
 
   const handleLogout = () => {
-    logout(`${window.location.origin}/unlock`);
+    logout(`${window.location.origin}`);
   };
 
   const isLoggedIn = Boolean(address);
@@ -20,10 +21,27 @@ const Navbar = () => {
       <div className='container-fluid'>
         <Link
           className='d-flex align-items-center navbar-brand mr-0'
-          to={isLoggedIn ? routeNames.dashboard : routeNames.home}
+          to={routeNames.home}
         >
           <ElrondLogo className='elrond-logo' />
           <span className='dapp-name text-muted'>{dAppName}</span>
+        </Link>
+        {isLoggedIn ? (
+          <>
+            <Link
+              className='dapp-name text-muted d-flex align-items-center navbar-brand mr-0'
+              to={routeNames.dashboard}
+            >
+              Dashboard
+            </Link>
+          </>
+        ) : null}
+
+        <Link
+          className='dapp-name text-muted d-flex align-items-center navbar-brand mr-0'
+          to={routeNames.info}
+        >
+          Info
         </Link>
 
         <Nav className='ml-auto'>
