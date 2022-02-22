@@ -8,8 +8,7 @@ import Layout from 'components/Layout';
 import PageNotFound from 'pages/PageNotFound';
 import React from 'react';
 import UnlockRoute from 'pages/UnlockPage';
-
-const environment = 'devnet';
+import { environment } from 'config';
 
 const { TransactionsToastList, SignTransactionsModals, NotificationModal } =
   DappUI;

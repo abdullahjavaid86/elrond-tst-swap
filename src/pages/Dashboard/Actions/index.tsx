@@ -141,6 +141,9 @@ const Actions = () => {
 
   return (
     <div className='d-flex mt-4 justify-content-center'>
+      <button className='btn btn-primary' onClick={sendPongTransaction}>
+        Transfer funds
+      </button>
       {hasPing !== undefined && (
         <>
           {hasPing && !hasPendingTransactions ? (
