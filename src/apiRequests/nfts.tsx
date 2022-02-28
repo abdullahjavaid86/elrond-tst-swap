@@ -13,7 +13,7 @@ export const NFTs = {
     creator = contractAddress
   }: getNftsInterface): Promise<NFTData> => {
     try {
-      const nfts = await axios.get(`${BASE_URL}accounts/${address}/nfts`, {
+      const nfts = await axios.get(`${BASE_URL}/accounts/${address}/nfts`, {
         params: {
           creator
         }

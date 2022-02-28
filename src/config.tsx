@@ -6,6 +6,6 @@ export const environment = getEnvironment();
 
 export const BASE_URL = `https://${
   environment !== 'mainnet' ? `${environment}-api` : 'api'
-}.elrond.com/`;
+}.elrond.com`;
 
 export const dAppName = 'Elrond Dapp';

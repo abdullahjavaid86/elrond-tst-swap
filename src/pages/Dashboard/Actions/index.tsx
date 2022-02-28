@@ -121,7 +121,7 @@ const Actions = () => {
       transactions: pongTransaction,
       transactionsDisplayInfo: {
         processingMessage: 'Processing Pong transaction',
-        errorMessage: 'An error has occured during Pong',
+        errorMessage: 'An error has occurred during Pong',
         successMessage: 'Pong transaction successful'
       },
       redirectAfterSign: false
@@ -175,7 +175,7 @@ const Actions = () => {
                       Pong
                     </a>
                   ) : (
-                    <>Pong</>
+                    'Pong'
                   )}
                 </span>
               </div>

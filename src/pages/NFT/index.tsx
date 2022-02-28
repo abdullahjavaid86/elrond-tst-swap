@@ -1,4 +1,3 @@
-import { Card, Col, Row } from 'react-bootstrap';
 import { NFTData, getNFts } from 'apiRequests/nfts';
 import React, { useEffect, useState } from 'react';
 
