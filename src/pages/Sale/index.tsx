@@ -1,13 +1,10 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import { dAppName } from 'config';
-import { getTotalPriceForEGLD } from 'helpers/functions';
+import { getTotalPriceForTst } from 'helpers/functions';
+import { useSaleActions } from './sale-action';
 
 export const TSTSale = (): React.ReactElement => {
-  const [toSwap, setSwap] = useState(0.0);
-
-  const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSwap(+e.target.value);
-  };
+  const { tstToSwap, onEgldChange, sendTransaction } = useSaleActions();
 
   return (
     <div className='d-flex flex-fill align-items-center container'>
@@ -23,17 +20,18 @@ export const TSTSale = (): React.ReactElement => {
                 <br /> Under Construction TST Public Sale :)
                 <br /> Swap your EGLD with TST:)
               </p>
-              <form>
+              <form onSubmit={sendTransaction}>
                 <label>
-                  Enter value to swap
+                  Enter TST value to swap
                   <input
                     type='number'
-                    onChange={onValueChange}
-                    value={toSwap}
-                    step='0.01'
+                    onChange={onEgldChange}
+                    value={tstToSwap}
+                    step='1'
+                    min='0'
                   />
                 </label>
-                <p>You will get: {getTotalPriceForEGLD(toSwap)}</p>
+                <p>You will get: {getTotalPriceForTst(tstToSwap)}</p>
                 <button className='btn btn-success'>Swap</button>
               </form>
             </div>
